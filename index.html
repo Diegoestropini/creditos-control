@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111713">
+  <title>Cuota · Tus préstamos, más claros</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="forecast.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="brand-icon">c.</span>cuota<span class="brand-dot">●</span></a><span class="local-badge"><i></i> Guardado en este navegador</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">UN PASO MÁS CERCA</p><h1>Menos pendientes.<br><span>Más tranquilidad.</span></h1><p class="subtitle">Tus préstamos en un solo lugar. Cada cuota cuenta.</p></div><div class="intro-art" aria-hidden="true"><span class="art-orbit"></span><span class="art-check">✓</span><span class="art-small">↗</span></div></section>
+    <section class="summary" aria-label="Resumen de préstamos"><div><span class="stat-label">Total por pagar</span><strong id="total-pending">$ 0</strong><small>Saldo pendiente de tus préstamos</small></div><div><span class="stat-label">Mensual estimado</span><strong id="monthly-total">$ 0</strong><small>Seg&uacute;n tus cuotas de referencia</small></div><div><span class="stat-label">Tu progreso general <span id="overall-percent">0%</span></span><div class="progress"><span id="overall-bar"></span></div><small id="overall-caption">Tu próximo paso empieza acá</small></div></section>
+    <div class="workspace"><section class="loans-section"><div class="section-heading"><h2>Mis préstamos <span id="loan-count">0</span></h2><select id="filter" aria-label="Filtrar préstamos"><option value="all">Todos los préstamos</option><option value="active">En curso</option><option value="done">Completados</option></select></div><div id="loan-list"></div></section>
+    <aside><section class="new-loan panel"><span class="section-icon">＋</span><h2>Un nuevo préstamo</h2><p>Agregá los detalles y empezá a llevar el control.</p><form id="loan-form"><label for="loan-name">Nombre del préstamo</label><input id="loan-name" name="name" placeholder="Ej. Auto, estudios, casa…" maxlength="70" required><div class="form-row"><div><label for="installments">Cuotas totales</label><input id="installments" name="installments" type="number" min="1" max="1200" step="1" placeholder="12" required></div><div><label for="amount">Cuota de referencia ($)</label><input id="amount" name="amount" type="number" min="0.01" max="100000000" step="0.01" placeholder="2500" required></div></div><label for="start-date">Fecha del primer pago</label><input id="start-date" name="startDate" type="date" required><label for="already-paid">Cuotas que ya pagaste <span>Opcional</span></label><input id="already-paid" name="paid" type="number" min="0" max="1200" step="1" placeholder="0" value="0"><div class="form-estimate"><span>Total del préstamo</span><strong id="estimate">$ 0</strong></div><button class="primary" type="submit">Agregar préstamo <span>↗</span></button><p id="form-error" class="error" role="alert"></p></form></section><div class="tip"><span>✦</span><div><strong>Adelantá tu tranquilidad</strong><p>Pod&eacute;s pagar cualquier monto, aunque no sea una cuota completa. Cada peso reduce tu saldo.</p></div></div><p class="disclaimer">El total inicial es cuotas &times; monto de referencia. Cada pago reduce el saldo. Las cuotas restantes se estiman con ese monto e incluyen una &uacute;ltima cuota menor. No se recalculan intereses ni cargos del prestamista.</p></aside></div>
+    <footer><span class="footer-brand">cuota.</span><span>Un poco de orden, un gran paso.</span><button id="export" class="text-button">Exportar respaldo ↓</button></footer>
+  </main>
+  <dialog id="payment-dialog"><form id="payment-form"><button type="button" class="close" id="close-dialog" aria-label="Cerrar">×</button><span class="section-icon">✓</span><h2>Un paso más cerca</h2><p id="payment-name"></p><label for="payment-mode">Registrar pago</label><select id="payment-mode"><option value="amount">Por monto</option><option value="installments">Por cuotas completas</option></select><label id="payment-label" for="payment-count">Monto pagado ($)</label><input id="payment-count" type="number" min="0.01" step="0.01" required><label for="payment-date">Fecha del pago</label><input id="payment-date" type="date" required><p id="payment-info" class="payment-info"></p><p id="payment-error" class="error" role="alert"></p><button class="primary" type="submit">Registrar pago ✓</button></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
